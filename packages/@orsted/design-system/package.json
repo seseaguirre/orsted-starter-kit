@@ -1,0 +1,16 @@
+{
+  "name": "@orsted/design-system",
+  "version": "0.1.0",
+  "description": "Ørsted Design System - Tokens and Styles",
+  "main": "tokens.js",
+  "scripts": {
+    "build": "node scripts/build-tokens.js",
+    "prepublishOnly": "npm run build"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
