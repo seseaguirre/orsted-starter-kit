@@ -1,0 +1,25 @@
+/* packages/@orsted/ui-web/src/components/Button/Button.css */
+@import url('@orsted/design-system/dist/tokens.css');
+
+.button {
+  padding: var(--spacing-small) var(--spacing-medium);
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.button--primary {
+  background-color: var(--color-primary);
+  color: var(--color-background);
+}
+
+.button--secondary {
+  background-color: var(--color-text);
+  color: var(--color-background);
+}
+
+.button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

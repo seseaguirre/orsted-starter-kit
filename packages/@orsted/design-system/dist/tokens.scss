@@ -1,1 +1,5 @@
-<span class="math-inline">{toSCSSVariables(colors, 'color')}</span>{toSCSSVariables(spacing, 'spacing')}
+$color-primary: #007acc;
+$color-background: #ffffff;
+$color-text: #333333;
+$spacing-small: 8px;
+$spacing-medium: 16px;

@@ -1,0 +1,3 @@
+/* packages/@orsted/ui-web/src/global.css */
+/* Import design system tokens - adjust path as necessary */
+@import '../../design-system/dist/tokens.css';

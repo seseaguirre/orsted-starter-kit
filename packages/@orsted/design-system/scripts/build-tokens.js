@@ -3,14 +3,17 @@ const fs = require('fs');
 const path = require('path');
 const { colors, spacing } = require('../tokens');
 
-function toCSSCustomProperties(obj, prefix = '') {
+function toCSSCustomProperties(obj, prefix = "") {
   let result = '';
+
   for (const key in obj) {
     if (Object.prototype.hasOwnProperty.call(obj, key)) {
       const value = obj[key];
-      const cssKey = `--<span class="math-inline">\{prefix\}</span>{prefix ? '-' : ''}${key}`;
+      const cssKey = `--${prefix}${prefix ? '-' : ''}${key}`; // Corrected line
+
       if (typeof value === 'object') {
-        result += toCSSCustomProperties(value, cssKey);
+        // Recursive call for nested objects
+        result += toCSSCustomProperties(value, `${prefix}${prefix ? '-' : ''}${key}`);
       } else {
         result += `${cssKey}: ${value};\n`;
       }
@@ -24,9 +27,9 @@ function toSCSSVariables(obj, prefix = '') {
   for (const key in obj) {
     if (Object.prototype.hasOwnProperty.call(obj, key)) {
       const value = obj[key];
-      const scssKey = `$<span class="math-inline">\{prefix\}</span>{prefix ? '-' : ''}${key}`;
+      const scssKey = `$${prefix}${prefix ? '-' : ''}${key}`;
       if (typeof value === 'object') {
-        result += toSCSSVariables(value, scssKey); // No $ for nested
+        result += toSCSSVariables(value, `${prefix}${prefix ? '-' : ''}${key}`);
       } else {
         result += `${scssKey}: ${value};\n`;
       }
@@ -34,9 +37,9 @@ function toSCSSVariables(obj, prefix = '') {
   }
   return result;
 }
-
 const cssVariables = `:root {\n${toCSSCustomProperties(colors, 'color')}${toCSSCustomProperties(spacing, 'spacing')}}\n`;
-const scssVariables = `<span class="math-inline">\{toSCSSVariables\(colors, 'color'\)\}</span>{toSCSSVariables(spacing, 'spacing')}`;
+
+const scssVariables = `${toSCSSVariables(colors, 'color')}${toSCSSVariables(spacing, 'spacing')}`;
 
 const distDir = path.join(__dirname, '../dist');
 if (!fs.existsSync(distDir)) {

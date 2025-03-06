@@ -1,7 +1,7 @@
 :root {
---<span class="math-inline">{prefix}</span>{prefix ? '-' : ''}primary: #007acc;
---<span class="math-inline">{prefix}</span>{prefix ? '-' : ''}background: #ffffff;
---<span class="math-inline">{prefix}</span>{prefix ? '-' : ''}text: #333333;
---<span class="math-inline">{prefix}</span>{prefix ? '-' : ''}small: 8px;
---<span class="math-inline">{prefix}</span>{prefix ? '-' : ''}medium: 16px;
+--color-primary: #007acc;
+--color-background: #ffffff;
+--color-text: #333333;
+--spacing-small: 8px;
+--spacing-medium: 16px;
 }
